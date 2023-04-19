@@ -1,0 +1,12 @@
+"Números Perfectos" --> son los números que cumplen la propiedad:
+σ(n)=2n, donde σ(n) es la suma de los divisores positivos de n.
+
+Por ejemplo:
+σ(1)=1 ya que el único divisor de 1 es el 1.
+σ(2)=3 ya que los divisores del 2 son 1 y 2.
+σ(6)=12
+A este último también se puede escribir como σ(n)=2(6), por lo que 6 es un número perfecto.
+
+Bien, los Números Multiperfectos son los números que se definen por:
+
+σ(n)=kn, con k entero y > 2.
