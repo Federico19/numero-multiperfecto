@@ -4,22 +4,32 @@ from decorators import delta_time
 def multiperfecto(rango):
 	return lista_multiperfectos(rango)
 
-def divisores(numero):
-  #Tanto 1 como el mismo numero son divisores de numero
-  lista_divisores=[1,numero]
-  #Los divisores de cualquier numero se encuentran entre 1 y el numero dividido 2, a excepcion del mismo numero
-  #Si el numero es par, analizamos desde 2 hasta n//2+1 para encontrar sus divisores
-  if (numero % 2 == 0):
-    for i in range(2, numero//2 +1):
-      if (numero % i) == 0:
-        lista_divisores.append(i)
-  else:
-    #Si el numero es impar, analizamos desde 3 hasta n//2 analizando solamente los impares
-    for i in range(3, numero//2, 2):
-      if (numero % i) == 0:
-        lista_divisores.append(i)
+def divisores(n):
+    # factorización prima
+    factors = {}
+    d = 2
+    while d * d <= n:
+        while (n % d) == 0:
+            if d not in factors:
+                factors[d] = 0
+            factors[d] += 1
+            n //= d
+        d += 1
+    if n > 1:
+        if n not in factors:
+            factors[n] = 0
+        factors[n] += 1
 
-  return lista_divisores
+    # construir la lista de divisores a partir de los factores primos
+    divisors = [1]
+    for prime in factors:
+        temp_divisors = []
+        for i in range(factors[prime] + 1):
+            for divisor in divisors:
+                temp_divisors.append(divisor * (prime ** i))
+        divisors = temp_divisors
+
+    return divisors
 
 def sumaDivisores(lista_divisores):
   resultado = 0
@@ -43,4 +53,3 @@ def lista_multiperfectos(rango):
 
 if __name__ == "__main__":
 	print(multiperfecto(1000000))
-

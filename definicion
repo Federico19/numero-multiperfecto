@@ -10,3 +10,32 @@ A este último también se puede escribir como σ(n)=2(6), por lo que 6 es un n�
 Bien, los Números Multiperfectos son los números que se definen por:
 
 σ(n)=kn, con k entero y > 2.
+
+
+Algoritmo divisores de n mediante factorizacion prima
+def get_divisors(n):
+    # factorización prima
+    factors = {}
+    d = 2
+    while d * d <= n:
+        while (n % d) == 0:
+            if d not in factors:
+                factors[d] = 0
+            factors[d] += 1
+            n //= d
+        d += 1
+    if n > 1:
+        if n not in factors:
+            factors[n] = 0
+        factors[n] += 1
+
+    # construir la lista de divisores a partir de los factores primos
+    divisors = [1]
+    for prime in factors:
+        temp_divisors = []
+        for i in range(factors[prime] + 1):
+            for divisor in divisors:
+                temp_divisors.append(divisor * (prime ** i))
+        divisors = temp_divisors
+
+    return divisors
