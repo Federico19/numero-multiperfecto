@@ -1,3 +1,5 @@
+from decorators import delta_time
+
 def divisores(numero):
   #Tanto 1 como el mismo numero son divisores de numero
   lista_divisores=[1,numero]
@@ -14,6 +16,7 @@ def sumaDivisores(lista_divisores):
     resultado += numero
   return resultado
 
+@delta_time("GRUPO GN")
 def es_multiperfecto(numero, suma_divisores):
   #Tomamos que parta del 6 en adelante ya que este es el primer numero multiperfecto.
   if (numero >5 and suma_divisores%numero == 0 and suma_divisores//numero >1):
@@ -25,3 +28,6 @@ for i in range(1,8130):
   if(es_multiperfecto(i,sumaDivisores(divisores(i)))):
     total.append(i)
 print(total)
+
+if __name__ == "__main__":
+	print(multiperfecto(100))
