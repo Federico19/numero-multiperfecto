@@ -32,4 +32,4 @@ def multiperfecto (n):
   return total
 
 if __name__ == "__main__":
-	print(multiperfecto(10000))
+	print(multiperfecto(100000))
