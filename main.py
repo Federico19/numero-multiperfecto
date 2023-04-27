@@ -16,18 +16,20 @@ def sumaDivisores(lista_divisores):
     resultado += numero
   return resultado
 
-@delta_time("GRUPO GN")
+
 def es_multiperfecto(numero, suma_divisores):
   #Tomamos que parta del 6 en adelante ya que este es el primer numero multiperfecto.
   if (numero >5 and suma_divisores%numero == 0 and suma_divisores//numero >1):
     return True
   return False
 
-total = []
-for i in range(1,8130):
-  if(es_multiperfecto(i,sumaDivisores(divisores(i)))):
-    total.append(i)
-print(total)
+@delta_time("GRUPO GN")
+def multiperfecto (n):
+  total = []
+  for i in range(1,n):
+    if(es_multiperfecto(i,sumaDivisores(divisores(i)))):
+      total.append(i)
+  return total
 
 if __name__ == "__main__":
-	print(multiperfecto(100))
+	print(multiperfecto(10000))
