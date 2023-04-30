@@ -1,35 +1,38 @@
 from decorators import delta_time
 
-def divisores(numero):
-  #Tanto 1 como el mismo numero son divisores de numero
-  lista_divisores=[1,numero]
-  #Los divisores de cualquier numero se encuentran entre 1 y el numero dividido 2, a excepcion del mismo numero
-  for i in range(2, numero//2 +1):
-    if (numero % i) == 0:
-      lista_divisores.append(i)
+#@delta_time("GRUPO G4")
+def factores_primos(numero, contador):
+  if numero == 1:
+    return []
+  else:
+    if numero % contador == 0:
+      return [contador] + factores_primos(numero // contador, contador)
+    else:
+      return factores_primos(numero,contador+1)
+                             
+lista2 = factores_primos(6120,2)
+lista = []
+lista = dict(zip(lista2,map(lambda x: lista2.count(x),lista2)))
 
-  return lista_divisores
+productoria= 1
 
-def sumaDivisores(lista_divisores):
-  resultado = 0
-  for numero in lista_divisores:
-    resultado += numero
-  return resultado
+for clave in lista:
+  productoria = productoria * ((clave ** (lista [clave] + 1)-1)/(clave - 1))
 
 
 def es_multiperfecto(numero, suma_divisores):
   #Tomamos que parta del 6 en adelante ya que este es el primer numero multiperfecto.
+  #Tomamos que suma_divisores//numero >1 ya que k debe ser >=2
   if (numero >5 and suma_divisores%numero == 0 and suma_divisores//numero >1):
     return True
   return False
 
-@delta_time("GRUPO GN")
-def multiperfecto (n):
-  total = []
-  for i in range(1,n):
-    if(es_multiperfecto(i,sumaDivisores(divisores(i)))):
-      total.append(i)
-  return total
+def lista_multiperfectos(rango):
+	total = []
+	for i in range(rango):
+		if(es_multiperfecto(i,productoria)):
+			total.append(i)
+	return total
 
 if __name__ == "__main__":
-	print(multiperfecto(100000))
+	print(lista_multiperfectos(120))
