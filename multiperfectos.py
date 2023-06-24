@@ -38,4 +38,8 @@ def multiperfectos(rango):
   return lista_multiperfectos
 
 
-print(multiperfectos(10000))
+resultado = suma_divisores(factores_primos_diccionario(2096128,2,dict()))
+print(resultado)
+print(resultado % 2096128 == 0)
+
+
