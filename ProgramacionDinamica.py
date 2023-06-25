@@ -37,6 +37,6 @@ if __name__ == "__main__":
     largo_total = 8
 
     mayor_ganancia, cortes_optimos = corte_optimo(longitud_corte, precio, largo_total)
-    print("Valor máximo obtenido:", mayor_ganancia)
-    print("Cortes realizados:", cortes_optimos)
+    print("Valor máximo de venta:", mayor_ganancia)
+    print("Combinación óptima de cortes:", cortes_optimos)
 
