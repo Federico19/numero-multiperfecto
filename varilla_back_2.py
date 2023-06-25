@@ -18,7 +18,7 @@ def backtracking(cortes, longitud, long_actual,
   return max_valor, max_comb
 
 
-def rod_cutting(cortes, longitud):
+def cortar_varilla(cortes, longitud):
     max_valor = 0
     max_comb = []
     long_actual = longitud
@@ -32,6 +32,6 @@ def rod_cutting(cortes, longitud):
 cortes = [1, 2, 3, 4, 5, 6, 7, 8]
 valores = [1, 5, 8, 9, 10, 17, 17, 20]
 longitud = 8
-max_valor, max_comb = rod_cutting(cortes, longitud)
+max_valor, max_comb = cortar_varilla(cortes, longitud)
 print("Valor máximo de venta:", max_valor)
 print("Combinación óptima de cortes:", max_comb)
